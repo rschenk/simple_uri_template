@@ -1,7 +1,70 @@
 = simple_uri_template
 
-Description goes here.
+* http://github.com/rschenk/simple_uri_template
 
-== Copyright
+== DESCRIPTION:
 
-Copyright (c) 2009 Ryan Schenk. See LICENSE for details.
+Simple URI Template is a ridiculously simple URI Templating class.
+
+It does not support all of the features of URI Templating (http://bitworking.org/projects/URI-Templates/) but it does support the simplest case well.
+
+I created it because the two Ruby URI Template libraries I could find (http://github.com/sporkmonger/addressable and https://rubyforge.org/projects/uri-template/) were making my life more difficult than necessary. Both libraries required String values for both keys and values in the "expansion" Hash. How annoying.
+
+== FEATURES/PROBLEMS:
+
+* Allows both Strings and Symbols as expansion Hash keys
+* Allows any object that responds to to_s as expansion values
+* Consists of one gsub
+* Only the simplest case of URI Templates, not all that fancy join stuff
+
+== SYNOPSIS:
+
+  template = SimpleURITemplate.new "http://github.com/{user}/{project}"
+  
+  template.expand { :user => 'rschenk', :project => 'simple_uri_template' }
+  #=> "http://github.com/rschenk/project"
+
+
+  template_2 = SimpleURITemplate.new "http://google.com?q={query}"
+  
+  template_2.expand { 'query' => 'Squibnocket Point tide chart' }
+  #=> "http://google.com?q=Squibnocket%20Point%20tide%20chart"
+
+
+  template_3 = SimpleURITemplate.new "http://example.com/page/{page_number}"
+  
+  template_3.expand :page_number => 2
+  #=> "http://www.example.com/page/2"
+
+== REQUIREMENTS:
+
+* Nothin' fancy
+
+== INSTALL:
+
+* sudo gem install rschenk-simple_uri_template
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2009 Ryan Schenk <rschenk@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

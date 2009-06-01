@@ -1,0 +1,7 @@
+= simple_uri_template
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 Ryan Schenk. See LICENSE for details.

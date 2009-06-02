@@ -22,7 +22,7 @@ I created it because the two Ruby URI Template libraries I could find (http://gi
   template = SimpleURITemplate.new "http://github.com/{user}/{project}"
   
   template.expand { :user => 'rschenk', :project => 'simple_uri_template' }
-  #=> "http://github.com/rschenk/project"
+  #=> "http://github.com/rschenk/simple_uri_template"
 
 
   template_2 = SimpleURITemplate.new "http://google.com?q={query}"
